@@ -73,11 +73,11 @@ jobs:
             cf push cicd-demo-3ap-dark -f manifest.yml -p cicd-demo-cf.jar -n cicd-demo-3ap-dark
 
             # Verify new version is working on dark URL.
-            HTTPCODE=`curl -s -o /dev/null -w "%{http_code}" https://cicd-demo-3ap-dark.cfapps.io/`
-            if [ "$HTTPCODE" -ne 200 ];then
-              echo "dark route not available, failing deploy"
-              exit 1
-            fi
+            # HTTPCODE=`curl -s -o /dev/null -w "%{http_code}" https://cicd-demo-3ap-dark.cfapps.io`
+            # if [ "$HTTPCODE" -ne 200 ];then
+            #  echo "dark route not available, failing deploy"
+            #  exit 1
+            # fi
 
             # Send "real" url to new version
             cf map-route cicd-demo-3ap-dark cfapps.io -n cicd-demo-3ap
