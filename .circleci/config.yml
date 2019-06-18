@@ -22,3 +22,9 @@ jobs:
           key: cicd-demo-{{ checksum "pom.xml" }}
 
       - run: mvn test
+
+      - store_test_results:
+          path: target/surefire-reports
+
+      - store_artifacts:
+          path: target/cicd-demo-cf.jar
