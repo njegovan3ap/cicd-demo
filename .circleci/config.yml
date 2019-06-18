@@ -5,7 +5,7 @@ jobs:
     working_directory: ~/cicd-demo
 
     docker:
-      - image: circleci/openjdk:8-jdk
+      - image: circleci/openjdk
 
     steps:
 
