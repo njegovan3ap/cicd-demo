@@ -1,8 +1,7 @@
 ---
 applications:
-  - name: cicd-demo
+  - name: cicd-demo-3ap
     memory: 768M
-    random-route: true
-    path: ../target/cicd-demo-cf.jar
+    instances: 1
     env:
       SPRING_PROFILES_ACTIVE: cloud
