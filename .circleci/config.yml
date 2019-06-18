@@ -70,17 +70,17 @@ jobs:
             cp /tmp/manifest.yml .
 
             # Push as "dark" instance
-            cf push circleci-dark -f manifest.yml -p cicd-demo-cf.jar -n circleci-dark
+            cf push cicd-demo-3ap -f manifest.yml -p cicd-demo-cf.jar -n cicd-demo-3ap
 
             # Verify new version is working on dark URL.
-            HTTPCODE=`curl -s -o /dev/null -w "%{http_code}" https://circleci-dark.cfapps.io/`
+            HTTPCODE=`curl -s -o /dev/null -w "%{http_code}" https://cicd-demo-3ap.cfapps.io/`
             if [ "$HTTPCODE" -ne 200 ];then
               echo "dark route note available, failing deploy"
               exit 1
             fi
 
             # Send "real" url to new version
-            cf map-route circleci-dark cfapps.io -n cicd-demo
+            cf map-route cicd-demo-3ap cfapps.io -n cicd-demo
 
             # Stop sending traffic to previous version
             cf unmap-route cicd-demo cfapps.io -n cicd-demo
@@ -92,7 +92,7 @@ jobs:
             cf delete cicd-demo -f
 
             # Switch name of "dark" version to claim correct name
-            cf rename circleci-dark cicd-demo
+            cf rename cicd-demo-3ap cicd-demo
 
 
 workflows:
