@@ -3,5 +3,6 @@ applications:
   - name: cicd-demo-3ap
     memory: 768M
     instances: 1
+    path: ../target/cicd-demo-cf.jar
     env:
       SPRING_PROFILES_ACTIVE: cloud
