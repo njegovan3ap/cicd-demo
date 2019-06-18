@@ -49,11 +49,9 @@ jobs:
       - image: circleci/openjdk
     working_directory: ~/deploy
     steps:
-      # why rebuild something we already tested, rebuilding invalidates any previous confidence?!
       - attach_workspace:
           at: /tmp
 
-      - run: queueBuildUntilFrontOfLine 5 #do not run parallel deployments
       - run:
           name: Setup CF CLI
           command: |
@@ -98,7 +96,7 @@ jobs:
 
 
 workflows:
-  version: 2
+  version: 2.1
   build-deploy:
     jobs:
       - build
