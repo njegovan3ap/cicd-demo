@@ -112,5 +112,3 @@ workflows:
             branches:
               only:
                 - develop
-          requires:
-            - build
