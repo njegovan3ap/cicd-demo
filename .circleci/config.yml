@@ -110,3 +110,7 @@ workflows:
       - deploy-cf:
           requires:
             - build
+          filters:
+            branches:
+              only:
+                - develop
