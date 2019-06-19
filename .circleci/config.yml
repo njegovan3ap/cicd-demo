@@ -103,14 +103,14 @@ workflows:
   build-deploy:
     jobs:
       - build
-        filters:
-          branches:
-            only:
-              - develop
+          filters:
+            branches:
+              only:
+                - develop
       - deploy-cf:
-        filters:
-          branches:
-            only:
-              - develop
-        requires:
-          - build
+          filters:
+            branches:
+              only:
+                - develop
+          requires:
+            - build
