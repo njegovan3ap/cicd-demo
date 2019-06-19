@@ -45,9 +45,12 @@ jobs:
             - manifest.yml
 
   deploy-cf:
+
+    working_directory: ~/deploy
+
     docker:
       - image: circleci/openjdk
-    working_directory: ~/deploy
+
     steps:
       - attach_workspace:
           at: /tmp
@@ -99,7 +102,15 @@ workflows:
   version: 2.1
   build-deploy:
     jobs:
-      - build
+      - build:
+          filters:
+            branches:
+              only:
+                - develop
       - deploy-cf:
+          filters:
+            branches:
+              only:
+                - develop
           requires:
             - build
