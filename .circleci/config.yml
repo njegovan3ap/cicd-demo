@@ -108,9 +108,5 @@ workflows:
             only:
               - develop
       - deploy-cf:
-          filters:
-            branches:
-              only:
-                - develop
           requires:
             - build
