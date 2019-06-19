@@ -101,12 +101,16 @@ jobs:
 workflows:
   version: 2.1
   build-deploy:
-    triggers:
-      branches:
-        only:
-          - develop
     jobs:
       - build
+        filters:
+          branches:
+            only:
+              - develop
       - deploy-cf:
+          filters:
+            branches:
+              only:
+                - develop
           requires:
             - build
