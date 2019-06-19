@@ -7,6 +7,10 @@ jobs:
     docker:
       - image: circleci/openjdk
 
+    branches:
+      only:
+        - develop
+
     steps:
 
       - checkout
@@ -45,9 +49,12 @@ jobs:
             - manifest.yml
 
   deploy-cf:
+
+    working_directory: ~/deploy
+
     docker:
       - image: circleci/openjdk
-    working_directory: ~/deploy
+
     steps:
       - attach_workspace:
           at: /tmp
