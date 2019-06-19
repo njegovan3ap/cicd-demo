@@ -18,4 +18,9 @@ public class BooksResource {
         books.add(new Book("title1", "author1"));
         return books;
     }
+
+    @GetMapping("/one")
+    public Book book() {
+        return new Book("title1", "author1");
+    }
 }
