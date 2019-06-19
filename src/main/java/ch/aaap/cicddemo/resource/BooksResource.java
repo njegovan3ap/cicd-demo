@@ -23,4 +23,9 @@ public class BooksResource {
     public Book book() {
         return new Book("title1", "author1");
     }
+
+    @GetMapping("/test")
+    public String test() {
+        return "Test";
+    }
 }
