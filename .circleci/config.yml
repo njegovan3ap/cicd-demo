@@ -7,10 +7,6 @@ jobs:
     docker:
       - image: circleci/openjdk
 
-    branches:
-      only:
-        - develop
-
     steps:
 
       - checkout
@@ -54,10 +50,6 @@ jobs:
 
     docker:
       - image: circleci/openjdk
-
-    branches:
-      only:
-        - develop
 
     steps:
       - attach_workspace:
@@ -109,6 +101,10 @@ jobs:
 workflows:
   version: 2.1
   build-deploy:
+    triggers:
+      branches:
+        only:
+          - develop
     jobs:
       - build
       - deploy-cf:
